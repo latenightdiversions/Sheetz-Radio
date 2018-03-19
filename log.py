@@ -1,4 +1,4 @@
-import parser
+import fetch
 import csv
 import os.path
 from time import localtime, strftime
@@ -14,7 +14,7 @@ if os.path.exists("history.csv") == False:
 def appendLog():
 
     timeString = strftime("%Y-%m-%d %H:%M:%S", localtime())         #creates the string containing the date and time
-    songInformation = parser.getSongData()                          #fetches the current song data
+    songInformation = fetch.getSongData()                          #fetches the current song data
     parameters = timeString, songInformation[0], songInformation[1]
 
 
