@@ -4,7 +4,7 @@ import os
 def getSongData():
 
     os.system("rm 087.html")
-    os.system("wget muzakwpn.muzak.com/wpn/087.html")
+    os.system("wget --quiet muzakwpn.muzak.com/wpn/087.html")
 
     with open("087.html") as website:
         docLines = website.readlines()

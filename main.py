@@ -4,7 +4,7 @@ import time
 import os
 
 def main():
-
+    # this is a test change to see how gpg signed commits work...
     # initial declarations and simple formatting
     log.appendLog()
     songInformationCurrent = parser.getSongData()
