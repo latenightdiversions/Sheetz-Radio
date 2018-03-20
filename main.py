@@ -10,7 +10,7 @@ def main():
     log.appendLog()
     print("You will need to log in to Spotify to continue. Please follow any onscreen prompts.")
     handler.authRoutine()
-    songInformationCurrent = fetch.getSongData()
+    songInformationCurrent = fetch.getCurrentSong()
     songInformationOld = songInformationCurrent
     #os.system("clear")
     print("Current song playing: ", songInformationCurrent[0], ", by", songInformationCurrent[1])
@@ -21,7 +21,7 @@ def main():
     while True:
 
         # gets tuple of song and artist in that order
-        songInformationCurrent = fetch.getSongData()
+        songInformationCurrent = fetch.getCurrentSong()
 
         # checks to see if song changed
         if songInformationCurrent != songInformationOld:

@@ -18,6 +18,6 @@ def authRoutine():
         print("Can't get token for", username)
 
 def metaFetch(artist,song):
-    spInteract = spotipy.Spotify()
+    spInteract = spotipy.Spotify(auth=globalToken)
     queryResults = spInteract.search(q='track:'+song+' artist:'+artist,type='track')
     print(queryResults)

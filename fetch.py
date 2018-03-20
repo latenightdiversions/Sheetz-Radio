@@ -1,7 +1,9 @@
 import os
+import spotipy
+
 
 # wget website and extract song title/artist.
-def getSongData():
+def getCurrentSong():
 
     os.system("rm 087.html")
     os.system("wget --quiet muzakwpn.muzak.com/wpn/087.html")

@@ -14,7 +14,7 @@ if os.path.exists("history.csv") == False:
 def appendLog():
 
     timeString = strftime("%Y-%m-%d %H:%M:%S", localtime())         #creates the string containing the date and time
-    songInformation = fetch.getSongData()                          #fetches the current song data
+    songInformation = fetch.getCurrentSong()                          #fetches the current song data
     parameters = timeString, songInformation[0], songInformation[1]
 
 
