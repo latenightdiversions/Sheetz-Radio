@@ -43,6 +43,7 @@ python main.py
 Completed Tasks:
 - Fetch metadata of current song.
 - Create a CSV file that tracks songs that have been recently played.
+
 TODO:
 - CLI, GUI, and desktop widget versions (Conky maybe?).
 - Cross platform support (Linux/Windows/Android...?)
