@@ -1,3 +1,5 @@
+# this file downloads the website and gets the song artist and track
+
 import platform
 import os
 import spotipy
@@ -6,22 +8,15 @@ import spotipy
 # wget website and extract song title/artist.
 def getCurrentSong():
 
-    osDetect = False
+    # checks OS and uses appropriate delete tool
+    if platform.system() == 'Linux' or platform.system() == 'Darwin':
+        os.system("rm 087.html")
 
-    while osDetect == False:
+    elif platform.system() == "Windows":
+        os.system("del 087.html")
 
-        # checks OS and uses appropriate delete tool
-        if platform.system() == 'Linux' or platform.system() == 'Darwin':
-            os.system("rm 087.html")
-            break
-
-        if platform.system() == "Windows":
-            os.system("del 087.html")
-            break
-
-        else:
-            print("bruv you on a leappad or some shit")
-            break
+    else:
+        print("bruv you on a leappad or some shit")
 
     # makes local copy of website
     os.system("wget --quiet muzakwpn.muzak.com/wpn/087.html")

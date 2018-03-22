@@ -1,9 +1,10 @@
+# this is the main file
+
 import fetch
 import log
 import handler
 import time
-import os
-import platform
+import xFunctions
 
 def main():
 
@@ -20,7 +21,7 @@ def main():
 
     # initial declaration, enables detection of song changing
     songInformationOld = songInformationCurrent
-    screenRefresh()
+    xFunctions.screenRefresh()
     print("Current song playing: ", songInformationCurrent[0], ", by", songInformationCurrent[1])
     print("Attempting to fetch track metadata from Spotify...")
 
@@ -37,21 +38,11 @@ def main():
         if songInformationCurrent != songInformationOld:
             log.appendLog()
             songInformationOld = songInformationCurrent
-            screenRefresh()
+            xFunctions.screenRefresh()
             handler.metaFetch(songInformationCurrent[0],songInformationCurrent[1])
 
         # refreshes current song from website every 5 seconds
         time.sleep(5)
-
-def screenRefresh():
-
-    #clear the command line screen using the appropriate command based on the user's operating system
-    if platform.system() == "Linux" or platform.system() == "Darwin":
-        os.system("clear")
-    elif platform.system() == "Windows":
-        os.system("cls")
-    else:
-        print("wtf lol")
 
 
 # I don't really understand why this works but it does
