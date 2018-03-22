@@ -42,6 +42,7 @@ def metaFetch(song,artist):
         dataI = dataC["popularity"]     #POPULARITY
         dataJ = dataC["duration_ms"]    #DURATION IN MILLISECONDS
         dataK = dataD["name"]           #ALBUM TITLE
+        dataL = dataC["preview_url"]    #MP3 PREVIEW
 
         # converts duration into something more readable
         durationSeconds = (dataJ / 1000)
@@ -49,7 +50,7 @@ def metaFetch(song,artist):
         durationMinutes = math.floor(durationSeconds / 60)
 
         xFunctions.screenRefresh()
-
+        
         print("Track Data:\nTitle: ",song,"\nArtist: ",artist,"\nAlbum: ",dataK,"\nRelease Date: ",dataH,"\nPopularity: ",dataI,"\nSong Duration: ",durationMinutes, math.floor(durationSecondsRemainder))
     else:
         print("No track data found in Spotify database.")
