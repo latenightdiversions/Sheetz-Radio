@@ -1,10 +1,9 @@
 # this file is responsible for sporify api calls
-
+import os
 import math
 import spotipy
 import spotipy.util as util
 import xFunctions
-
 import vlc      #use pip install python-vlc to get this package
 
 """NOTE: you need to set your Spotify API credentials as environment variables as of right now, this will be worked out in the future..."""
@@ -28,6 +27,8 @@ def metaFetch(song,artist):
     # initiates connection with user token and makes query with the song name/artist
     spInteract = spotipy.Spotify(auth=token)
     queryResults = spInteract.search(q='track:'+song+' artist:'+artist,type='track')
+
+    # beware beyond this point...
     dataA = queryResults["tracks"]
 
     if dataA["total"]>0:
@@ -51,10 +52,19 @@ def metaFetch(song,artist):
         durationSecondsRemainder = (durationSeconds % 60)
         durationMinutes = math.floor(durationSeconds / 60)
 
-        xFunctions.screenRefresh()
-        p = vlc.MediaPlayer(dataL)
-        p.play()
+        if math.floor(durationSecondsRemainder) < 10:
+            duration = ""
+            durationSecondsRemainder_2 = "0" + str(math.floor(durationSecondsRemainder))
+            duration = str(durationMinutes) + ":" + durationSecondsRemainder_2
+        duration = ""
+        duration = str(durationMinutes) + ":" + str(math.floor(durationSecondsRemainder))
 
-        print("Track Data:\nTitle: ",song,"\nArtist: ",artist,"\nAlbum: ",dataK,"\nRelease Date: ",dataH,"\nPopularity: ",dataI,"\nSong Duration: ",durationMinutes, math.floor(durationSecondsRemainder))
+        #TODO fix issue where trying to run twice in the duration of a song will crash the program
+        xFunctions.screenRefresh()
+        player = vlc.MediaPlayer(dataL)
+        player.play()
+        #TODO figure out how to get cava or something to work in the same terminal...
+
+        print("Track Data:\nTitle: ",song,"\nArtist: ",artist,"\nAlbum: ",dataK,"\nRelease Date: ",dataH,"\nPopularity: ",dataI,"\nSong Duration: ", duration)
     else:
         print("No track data found in Spotify database.")
