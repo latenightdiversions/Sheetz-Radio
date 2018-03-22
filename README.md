@@ -1,6 +1,8 @@
 # Sheetz-Radio
 Pulls the name of the song currently playing at Sheetz stores and then plays the song.
 
+This project very well may be the most pointless and poorly written code in decades, so if you stumble upon this and have the slightest clue on improvements, don't be afraid to tell us how to improve, or simply submit a pull request.
+
 This project is purely an excuse to learn a little Python and for fun. I do not expect anybody to honestly use this.
 
 COMPLETED:
