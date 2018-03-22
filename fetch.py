@@ -1,3 +1,4 @@
+import platform
 import os
 import spotipy
 
@@ -5,9 +6,28 @@ import spotipy
 # wget website and extract song title/artist.
 def getCurrentSong():
 
-    os.system("rm 087.html")
+    osDetect = False
+
+    while osDetect == False:
+
+        # checks OS and uses appropriate delete tool
+        if platform.system() == 'Linux' or platform.system() == 'Darwin':
+            os.system("rm 087.html")
+            break
+
+        if platform.system() == "Windows":
+            os.system("del 087.html")
+            break
+
+        else:
+            print("bruv you on a leappad or some shit")
+            break
+
+    # makes local copy of website
     os.system("wget --quiet muzakwpn.muzak.com/wpn/087.html")
 
+    # this horrible mess picks out the important information
+    # I am confident there is a more elegant way to do this...
     with open("087.html") as website:
         docLines = website.readlines()
         trackLine = docLines[15]

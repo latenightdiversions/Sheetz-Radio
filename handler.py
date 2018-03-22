@@ -1,27 +1,35 @@
 # this file is responsible for searching spotify for metadata
-#this is not the final form!!!
+
 import spotipy
 import spotipy.util as util
 
-
-
-
+"""NOTE: you need to set your Spotify API credentials as environment variables as of right now, this will be worked out in the future..."""
 def authRoutine():
+
+    # this part is essential, but who understands their own code less than those who write it?
     scope = " "
-    username = input("Username: ")  #Ask the user for their username
+
+    # promps user to enter username, required to get user token from spotify
+    username = input("Username: ")
     global token
     token = util.prompt_for_user_token(username,scope)
 
+    # probably shouldn't happen but you never know
     if not token:
         print("Can't get token for", username)
 
+# searches spotify for the current song, fetches metadata of song
 def metaFetch(song,artist):
+
+    # initiates connection with user token and makes query with the song name/artist
     spInteract = spotipy.Spotify(auth=token)
     queryResults = spInteract.search(q='track:'+song+' artist:'+artist,type='track')
     dataA = queryResults["tracks"]
 
     if dataA["total"]>0:
+
         #The following code goes from the full API result down to more and more specific entries in either a dict or list.
+        # Don't question it
         dataB = dataA["items"]
         dataC = dataB[0]
         dataD = dataC["album"]
