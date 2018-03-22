@@ -5,6 +5,8 @@ import spotipy
 import spotipy.util as util
 import xFunctions
 
+import vlc      #use pip install python-vlc to get this package
+
 """NOTE: you need to set your Spotify API credentials as environment variables as of right now, this will be worked out in the future..."""
 def authRoutine():
 
@@ -50,7 +52,9 @@ def metaFetch(song,artist):
         durationMinutes = math.floor(durationSeconds / 60)
 
         xFunctions.screenRefresh()
-        
+        p = vlc.MediaPlayer(dataL)
+        p.play()
+
         print("Track Data:\nTitle: ",song,"\nArtist: ",artist,"\nAlbum: ",dataK,"\nRelease Date: ",dataH,"\nPopularity: ",dataI,"\nSong Duration: ",durationMinutes, math.floor(durationSecondsRemainder))
     else:
         print("No track data found in Spotify database.")
