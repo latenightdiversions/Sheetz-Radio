@@ -13,7 +13,7 @@ import globals      #Storage for program-wide global variables
 def main():
 
     # Dan is a sexy potato
-    parser = argparse.ArgumentParser(description="I don't know what the text in this flag does.")               #Presumably,
+    parser = argparse.ArgumentParser(description="I don't know what the text in this flag does.")               #Presumably, does something important
     parser.add_argument('--mode',help='Use \'debug\'. Enables extremely verbose output. May cause the gay.')    #Detects --mode argument
     parser.add_argument('--previews', help='Use \'on\'. Plays 30 second song previews in VLC if VLC is installed properly and not feeling particularly retarded.')
     args = parser.parse_args()
