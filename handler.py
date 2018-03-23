@@ -5,7 +5,7 @@ import math
 import spotipy
 import spotipy.util as util
 import xFunctions
-import vlc      #use pip install python-vlc to get this package
+
 
 """NOTE: you need to set your Spotify API credentials as environment variables as of right now, this will be worked out in the future..."""
 def authRoutine():
@@ -63,12 +63,13 @@ def metaFetch(song,artist):
         #TODO fix issue where trying to run twice in the duration of a song will crash the program
 
         if platform.system() == "Linux":
+            import vlc      #use pip install python-vlc to get this package
             xFunctions.screenRefresh()
             player = vlc.MediaPlayer(dataL)
             player.play()
         else:
             xFunctions.screenRefresh()
-            print("you are fucked my dude")
+            print("Your computer is running Windows or macOS and is incompatible with Python-VLC. No song preview will be played.")
         #TODO figure out how to get cava or something to work in the same terminal...
 
         print("Track Data:\nTitle: ",song,"\nArtist: ",artist,"\nAlbum: ",dataK,"\nRelease Date: ",dataH,"\nPopularity: ",dataI,"\nSong Duration: ", duration)
