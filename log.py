@@ -1,7 +1,7 @@
-import fetch
-import csv
-import os.path
-from time import localtime, strftime
+import fetch                            #Used to fetch song data from site
+import csv                              #Used to write and append to a CSV log file
+import os.path                          #Used to detect files
+from time import localtime, strftime    #Used to configure time machine
 
 # Check if file exists, if not then declare the first row as an identifying row
 if os.path.exists("history.csv") == False:

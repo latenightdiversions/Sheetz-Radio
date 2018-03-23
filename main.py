@@ -1,12 +1,36 @@
 # this is the main file
+# ^yeah no shit thanks
 
-import fetch
-import log
-import handler
-import time
-import xFunctions
+import fetch        #Gets update metadata
+import log          #Generates CSV file
+import handler      #Used to interact with Spotify API
+import time         #Used for time machine purposes
+import xFunctions   #Extra uncategorized functions
+import argparse     #For detecting command-line arguments
+import globals      #Storage for program-wide global variables
+
 
 def main():
+
+    # Dan is a sexy potato
+    parser = argparse.ArgumentParser(description="I don't know what the text in this flag does.")               #Presumably,
+    parser.add_argument('--mode',help='Use \'debug\'. Enables extremely verbose output. May cause the gay.')    #Detects --mode argument
+    parser.add_argument('--previews', help='Use \'on\'. Plays 30 second song previews in VLC if VLC is installed properly and not feeling particularly retarded.')
+    args = parser.parse_args()
+
+    if args.mode == 'debug'
+        doDebugShit = True
+    else:
+        doDebugShit = False
+
+    if args.previews == 'on':
+        enablePreview = True
+    else:
+        enablePreview = False
+
+    if doDebugShit:
+        print('doing debug shit.')
+
 
     log.appendLog()
 

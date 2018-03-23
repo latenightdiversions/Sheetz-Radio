@@ -1,9 +1,8 @@
 # this file downloads the website and gets the song artist and track
 
-import platform
-import os
-import spotipy
-
+import platform             #Used for OS detection
+import os                   #Used for running commands in the system shell
+import spotipy              #Used to interact with Spotify API
 
 # wget website and extract song title/artist.
 def getCurrentSong():

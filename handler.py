@@ -1,11 +1,11 @@
 # this file is responsible for sporify api calls
-import platform
-import os
-import math
-import spotipy
-import spotipy.util as util
-import xFunctions
-
+import platform             #Used for OS detection
+import os                   #Used for running commands in the system shell
+import math                 #Used for meth
+import spotipy              #Used to interact with Spotify API
+import spotipy.util as util #Used to authenticate Spotify API tokens
+import xFunctions           #Extra miscellaneous functions
+#from main import doDebugShit
 
 """NOTE: you need to set your Spotify API credentials as environment variables as of right now, this will be worked out in the future..."""
 def authRoutine():
@@ -28,7 +28,8 @@ def metaFetch(song,artist):
     # initiates connection with user token and makes query with the song name/artist
     spInteract = spotipy.Spotify(auth=token)
     queryResults = spInteract.search(q='track:'+song+' artist:'+artist,type='track')
-
+    if doDebugShit:
+        print('hi still doing debug shit fuck me in the asshole please and thank you (use mayo as lube)')
     # beware beyond this point...
     dataA = queryResults["tracks"]
 
@@ -62,15 +63,15 @@ def metaFetch(song,artist):
 
         #TODO fix issue where trying to run twice in the duration of a song will crash the program
 
-        if platform.system() == "Linux":
+        if enablePreview:
             import vlc      #use pip install python-vlc to get this package
-            xFunctions.screenRefresh()
             player = vlc.MediaPlayer(dataL)
             player.play()
         else:
-            xFunctions.screenRefresh()
             print("Your computer is running Windows or macOS and is incompatible with Python-VLC. No song preview will be played.")
         #TODO figure out how to get cava or something to work in the same terminal...
+
+        xFunctions.screenRefresh()
 
         print("Track Data:\nTitle: ",song,"\nArtist: ",artist,"\nAlbum: ",dataK,"\nRelease Date: ",dataH,"\nPopularity: ",dataI,"\nSong Duration: ", duration)
     else:
