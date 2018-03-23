@@ -18,7 +18,7 @@ def main():
     parser.add_argument('--previews', help='Use \'on\'. Plays 30 second song previews in VLC if VLC is installed properly and not feeling particularly retarded.')
     args = parser.parse_args()
 
-    if args.mode == 'debug'
+    if args.mode == 'debug':
         doDebugShit = True
     else:
         doDebugShit = False
