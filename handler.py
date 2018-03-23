@@ -1,4 +1,5 @@
 # this file is responsible for sporify api calls
+import platform
 import os
 import math
 import spotipy
@@ -60,9 +61,14 @@ def metaFetch(song,artist):
         duration = str(durationMinutes) + ":" + str(math.floor(durationSecondsRemainder))
 
         #TODO fix issue where trying to run twice in the duration of a song will crash the program
-        xFunctions.screenRefresh()
-        player = vlc.MediaPlayer(dataL)
-        player.play()
+
+        if platform.system() == "Linux":
+            xFunctions.screenRefresh()
+            player = vlc.MediaPlayer(dataL)
+            player.play()
+        else:
+            xFunctions.screenRefresh()
+            print("you are fucked my dude")
         #TODO figure out how to get cava or something to work in the same terminal...
 
         print("Track Data:\nTitle: ",song,"\nArtist: ",artist,"\nAlbum: ",dataK,"\nRelease Date: ",dataH,"\nPopularity: ",dataI,"\nSong Duration: ", duration)
